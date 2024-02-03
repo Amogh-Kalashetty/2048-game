@@ -1,13 +1,20 @@
-FROM ubuntu:latest 
+FROM nginx:alpine
 
-RUN apt update -y && apt install nginx -y
+COPY . /usr/share/nginx/html/
 
-RUN mkdir -p /var/www/html
+RUN apk update && apk add bash
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+#RUN apt update -y && apt install nginx -y
 
-COPY . /var/www/html/
+#RUN mkdir -p /var/www/html
+
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+#COPY . /var/www/html/
 
 EXPOSE 80
 
-CMD ["usr/sbin/nginx"]
+#CMD ["usr/sbin/nginx"]
+
+#CMD ["nginx", "-g", "daemon off;"]
+
